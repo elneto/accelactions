@@ -135,6 +135,10 @@ function App() {
       <div className="row">
           <div className="col-md-9">
               <h3>Featured</h3>
+              {featured.map((f) => 
+                  <Commitment key={f.commitment_nr} commitment={f}></Commitment>                        
+                )
+              } 
           </div>
 
           <div className="col-md-3">
