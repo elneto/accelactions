@@ -10,6 +10,16 @@
 .commitment {
     border: 1px solid #ccc;
     padding: 1em;
+    margin-bottom: 1em;
+
+    p {
+        font-size: 0.9em;
+        color: $gray-dark;
+    }
+
+    h4 {
+        color: #444;
+    }
 }
 
 .lead {
@@ -40,6 +50,11 @@ select {
 
     &>li>a {
         @extend %nicey-blue;
+    }
+
+    &>li.active>a {
+        background-color: #01adef;
+        color: white;
     }
 }
 

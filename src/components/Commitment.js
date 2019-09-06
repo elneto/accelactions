@@ -9,7 +9,7 @@ function Commitment(props){
       <div className="commitment">
         <a href={"https://sustainabledevelopment.un.org/partnership/?p=" + com.commitment_nr} 
         target="_blank" rel="noopener noreferrer">
-          <h4>{com.title}</h4>
+          <h4 className="comTitle">{com.title}</h4>
         </a>
         <p>{com.intro}</p>
         <h4>Organization</h4>

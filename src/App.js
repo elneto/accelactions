@@ -15,7 +15,7 @@ function App() {
   const [start, setStart] = useState(0);
   const [total, setTotal] = useState(0);
   const [comsPerSDGs, setComsPerSDGs] = useState({});
-  const Rows = 20;
+  const Rows = 10;
 
   async function fetchData(an=0, start=0, rows=Rows, orderby="dateadded", direction="desc") {
     const res = await fetch(Constants.URL + "getCommitments.php?start="+start
@@ -116,6 +116,31 @@ function App() {
       </div>
       <p>&nbsp;</p>
       <div className="row">
+          <div className="col-md-9">
+              <h3>Featured</h3>
+          </div>
+
+          <div className="col-md-3">
+              <h3>More information</h3>
+              <div className="list-group">
+                  <a href="//effectivecooperation.org/our-work/callforevidence/" className="list-group-item list-group-item-action" target="_blank" rel="noopener noreferrer">25
+                      Jul - 30 Sep | Call for Evidence on effective
+                      development
+                      co-operation</a>
+
+              </div>
+          </div>
+
+      </div>
+
+      <div className="row">
+        <div className="col">
+          <h3>Browse</h3>
+
+        </div>
+      </div>
+
+      <div className="row">
         <div className="col" style={{display:"flex", justifyContent:"space-between"}}>
           
             <div>
@@ -139,6 +164,8 @@ function App() {
           
         </div>
       </div>
+      <p>&nbsp;</p>
+
       <div className="row">
         <div className="col">
         {Object.keys(commitments).map((key, index) => 

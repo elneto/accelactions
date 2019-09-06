@@ -7,4 +7,6 @@
 
   export const ActionNetwork = 79;
 
+  export const FEATURED = [29469, 29442, 29361, 28098];
+
   export default SDGCOLORS;

@@ -7,7 +7,7 @@ function Sdg(props){
     const style={
         padding:"0.2em 0.3em", 
         marginRight: "2px",
-        width: "1.2em",
+        width: "1.8em",
         display: "inline-block",
         textAlign: "center",
         backgroundColor: SDGCOLORS[sdg],

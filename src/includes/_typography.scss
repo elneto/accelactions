@@ -54,11 +54,17 @@ h3 {
 }
 
 h4 {
-    font-size: $font-size-base*1.1;
+    font-size: 1.3em;
 }
 
 h4.featured {
     margin-top: 0.5em;
+}
+
+h4.comTitle {
+    font-size: 1.3em;
+    font-weight: 500;
+    color: $blue !important;
 }
 
 a h4 {
