@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 //import 'bootstrap';
 import Pagination from "react-js-pagination";
 import Commitment from './components/Commitment.js';
+import CommitmentFeatured from './components/CommitmentFeatured.js';
 import Select from './components/Select.js';
 import { Bar } from 'react-chartjs-2';
 import * as Constants from './constants';
@@ -42,19 +43,18 @@ function App() {
         })
         .catch(err => console.log("API SDGS error: " + err));
     
-    //let featDataArray = [];
-    FEATUREDARRAY.forEach( async(cnr) => {
-      const res3 = await fetch(Constants.URL + "getCommitments.php?cnr="+cnr);
-      res3
-        .json()
-        .then(res3=>{
-          console.log(res3[0]);
-          setFeatured( featured => [...featured, res3[0]]);
-          
-        })
-        .catch(err => console.log("API SDGS error: " + err));
-    });
-    
+    if (featured.length<FEATUREDARRAY.length){
+        FEATUREDARRAY.forEach( async(cnr) => {
+        const res3 = await fetch(Constants.URL + "getCommitments.php?cnr="+cnr);
+        res3
+          .json()
+          .then(res3=>{
+            console.log("adding "+cnr);
+            setFeatured( featured => [...featured, res3[0]]);          
+          })
+          .catch(err => console.log("API SDGS error: " + err));
+      });
+    }    
   }
 
   useEffect(() => {
@@ -136,7 +136,7 @@ function App() {
           <div className="col-md-9">
               <h3>Featured</h3>
               {featured.map((f) => 
-                  <Commitment key={f.commitment_nr} commitment={f}></Commitment>                        
+                  <CommitmentFeatured key={"f"+f.commitment_nr} commitment={f}></CommitmentFeatured>                        
                 )
               } 
           </div>
