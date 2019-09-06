@@ -49,7 +49,6 @@ function App() {
         res3
           .json()
           .then(res3=>{
-            console.log("adding "+cnr);
             setFeatured( featured => [...featured, res3[0]]);          
           })
           .catch(err => console.log("API SDGS error: " + err));
@@ -122,7 +121,23 @@ function App() {
         }]
   };
 
-  //console.log(featured);
+  const featuContent = () =>{
+    const content = [];
+    let f = featured;
+
+    for (let i = 0; i < featured.length; i += 2 ){
+      content.push(
+        <div className="row">
+          <CommitmentFeatured key={f[i].commitment_nr} commitment={f[i]}></CommitmentFeatured>
+          {f[i+1] && (
+             <CommitmentFeatured key={f[i+1].commitment_nr} commitment={f[i+1]}></CommitmentFeatured>
+          )}
+        </div>
+      )
+    }
+
+    return content;
+  }
 
   return (
     <div className="App">
@@ -134,22 +149,40 @@ function App() {
       <p>&nbsp;</p>
       <div className="row">
           <div className="col-md-9">
+
               <h3>Featured</h3>
-              {featured.map((f) => 
-                  <CommitmentFeatured key={"f"+f.commitment_nr} commitment={f}></CommitmentFeatured>                        
-                )
-              } 
+              {featuContent()} 
           </div>
 
           <div className="col-md-3">
               <h3>More information</h3>
-              <div className="list-group">
-                  <a href="//effectivecooperation.org/our-work/callforevidence/" className="list-group-item list-group-item-action" target="_blank" rel="noopener noreferrer">25
-                      Jul - 30 Sep | Call for Evidence on effective
-                      development
-                      co-operation</a>
-
-              </div>
+              <a href="https://sustainabledevelopment.un.org/sdgsummit#acceleration-actions" target="_blank" rel="noopener noreferrer">
+                <img src="//sustainabledevelopment.un.org/content/images/SDG_AccelerationActions_flyer2.png" alt="SDG Acceleration Actions flyer" class="img-fluid"></img>
+              </a>
+              <p></p>
+              <p>Submissions will be reviewed by DESA in accordance with a set of criteria (<a href="//sustainabledevelopment.un.org/sdgsummit#acceleration-actions">see FAQ for details</a>). 
+                Governments, businesses and other stakeholders making the most innovative, ambitious and impactful 
+                commitments will be invited to announce their SDG Acceleration Actions to the media via the VIP social 
+                media studio or the SDG Media Zone.</p>
+              <p>Registration is now open online.</p>
+              <p><strong>More information:</strong></p>
+              <ul>
+                <li>
+                  <a href="/partnership/register/?source=90">Register your SDG Acceleration Action</a>
+                </li>
+                
+                <li><a href="/content/documents/23771General_Information_SDG_Acceleration_Actions_Call.pdf" target="_blank">Information Note</a></li>
+              </ul>
+              <p><strong>SDG Acceleration Actions - promotional flyers:</strong></p>
+              <ul>
+                <li><a href="/content/documents/SDG_Acceleration_Actions_flyer_AR.pdf" target="_blank">AR</a> |
+                  <a href="/content/documents/SDG_Acceleration_Actions_flyer_ZH.pdf" target="_blank">ZH </a> |
+                  <a href="/content/documents/SDG_Acceleration_Actions_flyer_EN.pdf" target="_blank">EN </a> |
+                  <a href="/content/documents/SDG_Acceleration_Actions_flyer_FR.pdf" target="_blank">FR </a> |
+                  <a href="/content/documents/SDG_Acceleration_Actions_flyer_RU.pdf" target="_blank">RU </a> |
+                  <a href="/content/documents/SDG_Acceleration_Actions_flyer_ES.pdf" target="_blank">ES </a>
+                </li>
+              </ul>
           </div>
 
       </div>
@@ -193,6 +226,19 @@ function App() {
             <Commitment key={commitments[key].commitment_nr} commitment={commitments[key]}></Commitment>                        
           )
         }
+        <div style={{display:"flex", justifyContent:"center", marginTop:"3em"}}>
+          <Pagination
+              prevPageText='prev'
+              nextPageText='next'
+              firstPageText='first'
+              lastPageText='last'
+              activePage={activePage}
+              itemsCountPerPage={Rows}
+              totalItemsCount={total}
+              pageRangeDisplayed={3}
+              onChange={handlePageChange}
+              />
+          </div>
         </div>
       </div>
     </div>

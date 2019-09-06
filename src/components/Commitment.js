@@ -14,8 +14,8 @@ function Commitment(props){
         <p>{com.intro}</p>
         <h4>Organization</h4>
         <p>{com.leadorg}</p>
-        <h4>Partners</h4>
-        <p>{com.partners}</p>
+        {/* <h4>Partners</h4>
+        <p>{com.partners}</p> */}
         <h4>SDGs</h4>
         <p>{com.goals.map(goal => 
           <Sdg key={goal} goal={goal}/>
