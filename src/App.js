@@ -5,6 +5,7 @@ import Commitment from './components/Commitment.js';
 import Select from './components/Select.js';
 import { Bar } from 'react-chartjs-2';
 import * as Constants from './constants';
+import { FEATUREDARRAY } from './constants/index.js';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
   const [start, setStart] = useState(0);
   const [total, setTotal] = useState(0);
   const [comsPerSDGs, setComsPerSDGs] = useState({});
+  const [featured, setFeatured] = useState([]);
   const Rows = 10;
 
   async function fetchData(an=0, start=0, rows=Rows, orderby="dateadded", direction="desc") {
@@ -39,6 +41,20 @@ function App() {
           setComsPerSDGs(res2);
         })
         .catch(err => console.log("API SDGS error: " + err));
+    
+    //let featDataArray = [];
+    FEATUREDARRAY.forEach( async(cnr) => {
+      const res3 = await fetch(Constants.URL + "getCommitments.php?cnr="+cnr);
+      res3
+        .json()
+        .then(res3=>{
+          console.log(res3[0]);
+          setFeatured( featured => [...featured, res3[0]]);
+          
+        })
+        .catch(err => console.log("API SDGS error: " + err));
+    });
+    
   }
 
   useEffect(() => {
@@ -106,6 +122,7 @@ function App() {
         }]
   };
 
+  //console.log(featured);
 
   return (
     <div className="App">
