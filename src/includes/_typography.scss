@@ -32,10 +32,12 @@ span.our-number {
     font-weight: 400;
 }
 
-h1 {
+h1#main-title {
     color: $gray-dark-60-percent;
     text-transform: uppercase;
     margin-top: 1em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid #ccc;
     font-family: $font-family-oswald;
     font-size: 3rem;
     font-weight: 600;

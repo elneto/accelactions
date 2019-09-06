@@ -111,7 +111,7 @@ function App() {
   return (
     <div className="App">
       <Bar data={graphData} width={100} height={22} options={{ maintainAspectRatio: true }}/>
-
+      <p>&nbsp;</p>
       <Select value={orderBy} options={orderOptions} onChange={handleOrderChange}/>
       <Select value={direction} options={directionOptions} onChange={handleDirectionChange}/>
 

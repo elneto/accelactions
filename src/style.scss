@@ -7,26 +7,33 @@
 @import "includes/header";
 @import "includes/footer";
 
+.commitment {
+    border: 1px solid #ccc;
+    padding: 1em;
+}
+
+.lead {
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: #555;
+    margin-top: 2em;
+    padding-left: 2em;
+    border-left: 1px solid $blue;
+}
+
+select {
+    word-wrap: normal;
+    padding: .7em;
+    background: #F7FCFE;
+    border: 1px solid #03ACEF;
+    color: #03ACEF;
+    font-weight: 500;
+    margin-right: 1em;
+}
+
 %cover-section {
     background-size: cover !important;
     // height: 100vh;
-}
-
-%rotate {
-    -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    transform: rotate(360deg);
-    -webkit-transition-duration: 0.3s;
-    -moz-transition-duration: 0.3s;
-    -o-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-}
-
-.maroma {
-    -webkit-transform: rotate(1turn);
-    transform: rotate(1turn);
-    transition-duration: 1s
 }
 
 a {
@@ -78,10 +85,6 @@ img#sdgwheel {
 img#sdgwheel2 {
     margin-top: 2.9em;
     padding-bottom: 1em;
-}
-
-.rotate {
-    @extend %rotate;
 }
 
 .noypadding {
