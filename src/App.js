@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-//import './App.css';
+//import 'bootstrap';
 import Pagination from "react-js-pagination";
-
 import Commitment from './components/Commitment.js';
 import Select from './components/Select.js';
 import { Bar } from 'react-chartjs-2';
@@ -110,22 +109,44 @@ function App() {
 
   return (
     <div className="App">
-      <Bar data={graphData} width={100} height={22} options={{ maintainAspectRatio: true }}/>
+      <div className="row">
+        <div className="col">
+          <Bar data={graphData} width={100} height={22} options={{ maintainAspectRatio: true }}/>
+        </div>
+      </div>
       <p>&nbsp;</p>
-      <Select value={orderBy} options={orderOptions} onChange={handleOrderChange}/>
-      <Select value={direction} options={directionOptions} onChange={handleDirectionChange}/>
+      <div className="row">
+        <div className="col" style={{display:"flex", justifyContent:"space-between"}}>
+          
+            <div>
+              <Select value={orderBy} options={orderOptions} onChange={handleOrderChange}/>
+              <Select value={direction} options={directionOptions} onChange={handleDirectionChange}/>
+            </div>
 
-      <Pagination
-        activePage={activePage}
-        itemsCountPerPage={Rows}
-        totalItemsCount={total}
-        pageRangeDisplayed={3}
-        onChange={handlePageChange}
-      />
-
-      {Object.keys(commitments).map(key =>
-        <Commitment key={commitments[key].commitment_nr} commitment={commitments[key]}></Commitment>
-      )}
+            <div id="pagibox" className="justify-content-end">
+              <Pagination
+                prevPageText='prev'
+                nextPageText='next'
+                firstPageText='first'
+                lastPageText='last'
+                activePage={activePage}
+                itemsCountPerPage={Rows}
+                totalItemsCount={total}
+                pageRangeDisplayed={3}
+                onChange={handlePageChange}
+              />
+            </div>
+          
+        </div>
+      </div>
+      <div className="row">
+        <div className="col">
+        {Object.keys(commitments).map((key, index) => 
+            <Commitment key={commitments[key].commitment_nr} commitment={commitments[key]}></Commitment>                        
+          )
+        }
+        </div>
+      </div>
     </div>
   );
 }

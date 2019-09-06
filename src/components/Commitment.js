@@ -5,6 +5,7 @@ function Commitment(props){
   const com = props.commitment;
   //TODO an SDG component and map it
     return(    
+      
       <div className="commitment">
         <a href={"https://sustainabledevelopment.un.org/partnership/?p=" + com.commitment_nr} 
         target="_blank" rel="noopener noreferrer">
@@ -20,6 +21,7 @@ function Commitment(props){
           <Sdg key={goal} goal={goal}/>
           )}</p>
       </div>
+      
       )
   }
 
