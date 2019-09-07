@@ -115,7 +115,7 @@ function App() {
   const graphData = {
     labels: graphKeys(),
     datasets: [{
-            label: 'Acceleration Actions per SDG',            
+            label: 'Number of acceleration actions',            
             data: graphVals(),
             backgroundColor: Constants.SDGCOLORS.slice(1)            
         }]
@@ -143,7 +143,18 @@ function App() {
     <div className="App">
       <div className="row">
         <div className="col">
-          <Bar data={graphData} width={100} height={22} options={{ maintainAspectRatio: true }}/>
+          <Bar data={graphData} width={100} height={22} options={{ 
+            maintainAspectRatio: true, 
+            title: {
+              display: true,
+              text: 'Number of Acceleration Actions per SDG', 
+              fontSize: 16,
+              lineHeight: 1.8
+              },
+            legend: {
+              display: false
+              } 
+            }}/>
         </div>
       </div>
       <p>&nbsp;</p>
