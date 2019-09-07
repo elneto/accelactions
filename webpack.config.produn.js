@@ -17,7 +17,7 @@ module.exports = {
     }
   },
   plugins: [
-    new CleanWebpackPlugin('dist', {}),
+    new CleanWebpackPlugin('accelactions', {}),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
@@ -42,7 +42,7 @@ module.exports = {
     main: './src/index.js'
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'accelactions'),
     filename: '[name].[chunkhash].js',
     publicPath: '/content/accelactions/'
   },

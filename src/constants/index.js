@@ -3,10 +3,11 @@
       "#f36d25","#e11484","#f99d26","#cf8d2a","#48773e","#007dbc","#3eb049","#02558b","#183668"
   ];
 
-  export const URL = "http://sustdevlocal.un.org/api1/";
+  //export const URL = "http://sustdevlocal.un.org/api1/";
+  export const URL = "https://sustainabledevelopment.un.org/api1/";
 
-  export const ActionNetwork = 79;
+  export const ActionNetwork = 90;
 
-  export const FEATUREDARRAY = [29469, 29442, 29361, 28098];
+  export const FEATUREDARRAY = [32640, 32598, 32508, 32811];
 
   export default SDGCOLORS;
