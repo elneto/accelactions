@@ -189,7 +189,7 @@ function App() {
 
       <div className="row">
         <div className="col">
-          <h3>Browse</h3>
+          <h3>Browse the <strong>{total}</strong> submissions</h3>
 
         </div>
       </div>
