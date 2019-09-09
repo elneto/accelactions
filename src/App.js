@@ -8,6 +8,12 @@ import { Bar } from 'react-chartjs-2';
 import * as Constants from './constants';
 import { FEATUREDARRAY } from './constants/index.js';
 
+function rnToHTMLObj(str){
+  const regex = /\\+r\\+n/gi;
+  let clean = str.replace(regex, "<br>");
+  return {__html: "<p>" + clean + "</p>"};
+}
+
 function App() {
 
   const [commitments, setCommitments] = useState({});
@@ -31,8 +37,7 @@ function App() {
       .json()
       .then(res => {
         Object.keys(res).map((key) => {
-          const regex = /\\+r\\+n/gi;
-          res[key].intro = {__html: "<p>" + res[key].intro.replace(regex, "<br>") + "</p>"};
+          res[key].intro = rnToHTMLObj(res[key].intro);
           return 0;
         });
         setCommitments(res);
@@ -54,6 +59,10 @@ function App() {
         res3
           .json()
           .then(res3=>{
+            res3.map(key => {
+              res3[0].intro = rnToHTMLObj(res3[0].intro);
+              return 0;
+            });
             setFeatured( featured => [...featured, res3[0]]);          
           })
           .catch(err => console.log("API SDGS error: " + err));
