@@ -30,6 +30,11 @@ function App() {
     res
       .json()
       .then(res => {
+        Object.keys(res).map((key) => {
+          const regex = /\\+r\\+n/gi;
+          res[key].intro = {__html: "<p>" + res[key].intro.replace(regex, "<br>") + "</p>"};
+          return 0;
+        });
         setCommitments(res);
       })
       .catch(err => console.log("API Commitments error: " + err));
@@ -168,7 +173,7 @@ function App() {
           <div className="col-md-3">
               <h3>More information</h3>
               <a href="https://sustainabledevelopment.un.org/sdgsummit#acceleration-actions" target="_blank" rel="noopener noreferrer">
-                <img src="//sustainabledevelopment.un.org/content/images/SDG_AccelerationActions_flyer2.png" alt="SDG Acceleration Actions flyer" class="img-fluid"></img>
+                <img src="//sustainabledevelopment.un.org/content/images/SDG_AccelerationActions_flyer2.png" alt="SDG Acceleration Actions flyer" className="img-fluid"></img>
               </a>
               <p></p>
               <p>Submissions will be reviewed by DESA in accordance with a set of criteria (<a href="//sustainabledevelopment.un.org/sdgsummit#acceleration-actions">see FAQ for details</a>). 

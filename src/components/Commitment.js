@@ -11,7 +11,7 @@ function Commitment(props){
         target="_blank" rel="noopener noreferrer">
           <h4 className="comTitle">{com.title}</h4>
         </a>
-        <p>{com.intro}</p>
+        <div dangerouslySetInnerHTML={com.intro}></div>
         <h4>Organization</h4>
         <p>{com.leadorg}</p>
         {/* <h4>Partners</h4>
