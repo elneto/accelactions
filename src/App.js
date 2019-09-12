@@ -62,6 +62,7 @@ function App() {
           .then(res3=>{
             res3.map(key => {
               res3[0].intro = rnToHTMLObj(res3[0].intro);
+              res3[0].partners = rnToHTMLObj(res3[0].partners);
               return 0;
             });
             setFeatured( featured => [...featured, res3[0]]);          
