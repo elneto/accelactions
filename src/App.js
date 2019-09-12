@@ -32,20 +32,20 @@ function App() {
                 +"&orderby="+orderby
                 +"&direction="+direction
                 +"&an="+an  
-                +"&flushcache=1"
+                +"&flushcache="+Constants.FLUSHCACHE
                 );
     res
       .json()
       .then(res => {
-        Object.keys(res).map((key) => {
-          res[key].intro = rnToHTMLObj(res[key].intro);
+        Object.keys(res).map((i) => {
+          res[i].intro = rnToHTMLObj(res[i].intro);
           return 0;
         });
         setCommitments(res);
       })
       .catch(err => console.log("API Commitments error: " + err));
 
-    const res2 = await fetch(Constants.URL + "getSDGsActionNetwork.php?an="+an);
+    const res2 = await fetch(Constants.URL + "getSDGsActionNetwork.php?an="+an+"&flushcache="+Constants.FLUSHCACHE);
       res2
         .json()
         .then(res2=>{
@@ -56,7 +56,7 @@ function App() {
     
     if (featured.length<FEATUREDARRAY.length){
         FEATUREDARRAY.forEach( async(cnr) => {
-        const res3 = await fetch(Constants.URL + "getCommitments.php?cnr="+cnr+"&flushcache=1");
+        const res3 = await fetch(Constants.URL + "getCommitments.php?cnr="+cnr+"&flushcache="+Constants.FLUSHCACHE);
         res3
           .json()
           .then(res3=>{
@@ -136,7 +136,7 @@ function App() {
         }]
   };
 
-  const featuContent = () =>{
+  const featuContent = () => {
     const content = [];
     let f = featured;
 
@@ -152,6 +152,14 @@ function App() {
     }
 
     return content;
+  }
+
+  const willShowTotal = () => {
+    let message = <div>Browse</div>;
+    if (Constants.SHOWTOTAL){
+      message = <div>Browse the <strong>{total}</strong> submissions</div>
+    }
+    return message;
   }
 
   return (
@@ -215,8 +223,9 @@ function App() {
 
       <div className="row">
         <div className="col">
-          <h3>Browse the <strong>{total}</strong> submissions</h3>
-
+          <h3>
+            {willShowTotal()}
+          </h3>
         </div>
       </div>
 
