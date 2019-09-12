@@ -32,6 +32,7 @@ function App() {
                 +"&orderby="+orderby
                 +"&direction="+direction
                 +"&an="+an  
+                +"&flushcache=1"
                 );
     res
       .json()
@@ -55,7 +56,7 @@ function App() {
     
     if (featured.length<FEATUREDARRAY.length){
         FEATUREDARRAY.forEach( async(cnr) => {
-        const res3 = await fetch(Constants.URL + "getCommitments.php?cnr="+cnr);
+        const res3 = await fetch(Constants.URL + "getCommitments.php?cnr="+cnr+"&flushcache=1");
         res3
           .json()
           .then(res3=>{
