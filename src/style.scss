@@ -58,6 +58,11 @@ select {
     }
 }
 
+#top-pagination {
+    display: flex;
+    justify-content: flex-end;
+}
+
 #pagibox {
     align-self: flex-end;
 }

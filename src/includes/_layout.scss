@@ -18,34 +18,9 @@
         float: right;
     }
 
-
-    #cover-title {
-        font-size: $font-size-base*1.85*2/3;
-    }
-
-    #cover-subtitle {
-        font-size: $font-size-base*1.28*2/3;
-    }
-
-    // #tagline-block {
-    //     font-size: $font-size-base*2.14;
-    // }
-
-    #tagline-block {
-        font-size: 1.84rem;
-    }
-
-    .sdgbox{
-      h2{
-        font-size: 1.5rem;
-      }
-      h3{
-        font-size: 1.1rem;
-      }
-      p{
-        font-size: 0.8rem;
-      }
-
+    #top-pagination {
+        margin-top: 2em;
+        justify-content: center;
     }
 
     .list-inline {
@@ -67,15 +42,6 @@
 
     #tagline-block {
         font-size: $font-size-base*2.5;
-    }
-
-    .sdgbox {
-      h2{
-        font-size: 1.5rem !important;
-      }
-      h3{
-        font-size: 1.2rem !important;
-      }
     }
 }
 

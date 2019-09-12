@@ -230,28 +230,25 @@ function App() {
       </div>
 
       <div className="row">
-        <div className="col" style={{display:"flex", justifyContent:"space-between"}}>
-          
-            <div>
-              <Select value={orderBy} options={orderOptions} onChange={handleOrderChange}/>
-              <Select value={direction} options={directionOptions} onChange={handleDirectionChange}/>
-            </div>
-
-            <div id="pagibox" className="justify-content-end">
-              <Pagination
-                prevPageText='prev'
-                nextPageText='next'
-                firstPageText='first'
-                lastPageText='last'
-                activePage={activePage}
-                itemsCountPerPage={Rows}
-                totalItemsCount={total}
-                pageRangeDisplayed={3}
-                onChange={handlePageChange}
-              />
-            </div>
-          
+        <div className="col-md-6">
+          <Select value={orderBy} options={orderOptions} onChange={handleOrderChange}/>
+          <Select value={direction} options={directionOptions} onChange={handleDirectionChange}/>
         </div>
+        <div className="col-md-6" id="top-pagination">
+          <div id="pagibox" className="justify-content-end">
+            <Pagination
+              prevPageText='prev'
+              nextPageText='next'
+              firstPageText='first'
+              lastPageText='last'
+              activePage={activePage}
+              itemsCountPerPage={Rows}
+              totalItemsCount={total}
+              pageRangeDisplayed={3}
+              onChange={handlePageChange}
+            />
+          </div>
+        </div>          
       </div>
       <p>&nbsp;</p>
 

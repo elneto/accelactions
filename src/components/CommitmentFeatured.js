@@ -6,7 +6,7 @@ function CommitmentFeatured(props){
   //TODO an SDG component and map it
     return(    
       
-      <div className="col-6">
+      <div className="col-md-6">
         <div className="commitment">
             <a href={"https://sustainabledevelopment.un.org/partnership/?p=" + com.commitment_nr} 
             target="_blank" rel="noopener noreferrer">
