@@ -15,8 +15,8 @@ function CommitmentFeatured(props){
             <div dangerouslySetInnerHTML={com.intro}></div>
             <h4>Organization</h4>
             <p>{com.leadorg}</p>
-            <h4>Partners</h4>
-            <div dangerouslySetInnerHTML={com.partners}></div>
+            {/* <h4>Partners</h4>
+            <div dangerouslySetInnerHTML={com.partners}></div> */}
             <h4>SDGs</h4>
             <p>{com.goals.map(goal => 
             <Sdg key={goal} goal={goal}/>

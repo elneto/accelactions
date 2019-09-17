@@ -8,9 +8,12 @@ import { Bar } from 'react-chartjs-2';
 import * as Constants from './constants';
 import { FEATUREDARRAY } from './constants/index.js';
 
-function rnToHTMLObj(str){
+function rnToHTMLObj(str, maxchar, commitment_nr){
   const regex = /\\+r\\+n/gi;
   let clean = str.replace(regex, "<br>");
+  if (clean.length > maxchar){
+    clean = clean.substring(0,maxchar-1) + '... <a href="https://sustainabledevelopment.un.org/partnership/?p=' + commitment_nr + '" target="_blank" rel="noopener noreferrer">(Read more)</a>';
+  }  
   return {__html: "<p>" + clean + "</p>"};
 }
 
@@ -38,7 +41,7 @@ function App() {
       .json()
       .then(res => {
         Object.keys(res).map((i) => {
-          res[i].intro = rnToHTMLObj(res[i].intro);
+          res[i].intro = rnToHTMLObj(res[i].intro, Number.MAX_SAFE_INTEGER, null);
           return 0;
         });
         setCommitments(res);
@@ -61,8 +64,8 @@ function App() {
           .json()
           .then(res3=>{
             res3.map(key => {
-              res3[0].intro = rnToHTMLObj(res3[0].intro);
-              res3[0].partners = rnToHTMLObj(res3[0].partners);
+              res3[0].intro = rnToHTMLObj(res3[0].intro, 500, res3[0].commitment_nr);              
+              //res3[0].partners = rnToHTMLObj(res3[0].partners, 500);
               return 0;
             });
             setFeatured( featured => [...featured, res3[0]]);          
